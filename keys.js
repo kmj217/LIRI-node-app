@@ -1,4 +1,4 @@
-console.log('this is loaded');
+console.log('This is loaded');
 
 exports.spotify = {
     id: process.env.SPOTIFY_ID,
@@ -11,8 +11,4 @@ exports.bandsintown = {
 
 exports.omdb = {
     id: process.env.OMDB_ID
-}
-
-exports.mapquest = {
-    id: process.env.MAPQUEST_ID
 }
