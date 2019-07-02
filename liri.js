@@ -5,14 +5,11 @@ require("dotenv").config();
 var keys = require("./keys.js");
 
 // Require request
-let request = require("request");
+var request = require("request");
 
 // Spotify variables
 var Spotify = require("node-spotify-api");
 var spotify = new Spotify(keys.spotify);
-
-// Bands in town API
-var bandsintown = (keys.bandsintown);
 
 // moment variable
 var moment = require("moment");
@@ -30,6 +27,9 @@ function userCommand(userInput, userQuery) {
         case "concert-this":
             concertSearch();
             break;
+        case "movie-this":
+                movieSearch();
+                break;
         default:
             console.log("I don't understand. Please try a valid command.")
     }
@@ -74,11 +74,30 @@ function concertSearch() {
                     console.log(`\n---------------\nAh ha! I found something. Here are the results...\n\nArtist: ${userBand[i].lineup[0]} \nVenue: ${userBand[i].venue.name}\nVenue Location: ${userBand[i].venue.latitude},${userBand[i].venue.longitude}\nVenue City: ${userBand[i].venue.city}, ${userBand[i].venue.country}`)
                     // Using moment to format date
                     let concertDate = moment(userBand[i].datetime).format("MM/DD/YYYY hh:00 A");
-                    console.log(`Date and Time: ${concertDate}\n\n- - - - -`);
+                    console.log(`Date and Time: ${concertDate}\n\n---------------`);
                 };
             } else {
                 console.log('Band or concert not found!');
             };
         };
     });
+};
+
+// OMDB movie search function
+function movieSearch() {
+    console.log("\nSearching for your movie request.");
+    if (!userQuery) {
+        userQuery = "Mr Nobody";
+    };
+    request("http://www.omdbapi.com/?t=" + userQuery + "&apikey=c88eeeb", function (error, response, body) {
+        let userMovie = JSON.parse(body);
+        let ratingsArr = userMovie.Ratings;
+        if (ratingsArr.length > 2) {}
+
+        if (!error && response.statusCode === 200) {
+            console.log(`\n---------------\nAh ha! I found something. Here are the results...\n\nTitle: ${userMovie.Title}\nCast: ${userMovie.Actors}\nReleased: ${userMovie.Year}\nIMDb Rating: ${userMovie.imdbRating}\nRotten Tomatoes Rating: ${userMovie.Ratings[1].Value}\nCountry: ${userMovie.Country}\nLanguage: ${userMovie.Language}\nPlot: ${userMovie.Plot}\n\n---------------`)
+        } else {
+            return console.log("Error: " + error + " occured.")
+        };
+    })
 };
