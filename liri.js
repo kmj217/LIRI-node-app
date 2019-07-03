@@ -14,6 +14,9 @@ var spotify = new Spotify(keys.spotify);
 // moment variable
 var moment = require("moment");
 
+// fs varviable
+const fs = require("fs");
+
 // Take user command and input
 var userInput = process.argv[2];
 var userQuery = process.argv.slice(3).join(" ");
@@ -28,8 +31,11 @@ function userCommand(userInput, userQuery) {
             concertSearch();
             break;
         case "movie-this":
-                movieSearch();
-                break;
+            movieSearch();
+            break;
+        case "do-what-it-says":
+            doSearch(userQuery);
+            break;
         default:
             console.log("I don't understand. Please try a valid command.")
     }
@@ -73,7 +79,7 @@ function concertSearch() {
                 for (i = 0; i < 1; i++) {
                     console.log(`\n---------------\nAh ha! I found something. Here are the results...\n\nArtist: ${userBand[i].lineup[0]} \nVenue: ${userBand[i].venue.name}\nVenue Location: ${userBand[i].venue.latitude},${userBand[i].venue.longitude}\nVenue City: ${userBand[i].venue.city}, ${userBand[i].venue.country}`)
                     // Using moment to format date
-                    let concertDate = moment(userBand[i].datetime).format("MM/DD/YYYY hh:00 A");
+                    let concertDate = moment(userBand[i].datetime).format("MM/DD/YYYY h:mm A");
                     console.log(`Date and Time: ${concertDate}\n\n---------------`);
                 };
             } else {
@@ -100,4 +106,17 @@ function movieSearch() {
             return console.log("Error: " + error + " occured.")
         };
     })
+};
+
+// do what is says function
+function doSearch() {
+    fs.readFile("random.txt", "utf8", function (error, data) {
+        if (error) {
+            console.log(error);
+        }
+        let dataArr = data.split(",");
+        userInput = dataArr[0];
+        userQuery = dataArr[1];
+        userCommand(userInput, userQuery);
+    });
 };
