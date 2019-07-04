@@ -18,7 +18,7 @@ Commands | Function
 spotify-this-song | uses the **spotify** API to take a song name from the user and returns the artist, song name, spotify-link and album 
 concert-this | uses the **bandsintown** API to take a band name from the user and returns that bands next concert
 movie-this | uses the **OMDB** API to take a movie name and returns the name, cast, release year, IMDB and Rotten Tomatoes rating, country of origin, language and plot 
-do-this | uses the built in **readFile()** method to access data from a .txt file and return its information as a command/search query.
+do-what-it-says | uses the built in **readFile()** method to access data from a .txt file and return its information as a command/search query.
 
 **Before you get started, make sure you have these node packages installed:**
 1. **Dotenv:** Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env. Storing configuration in the environment separate from code is based on The Twelve-Factor App methodology.
