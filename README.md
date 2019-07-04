@@ -47,7 +47,7 @@ Read more about these methods [here](https://www.npmjs.com/)
 --- 
 1. spotify-this-song
 
-    Function takes the userInput (command) and the userQuery(song), and returns the artist, full track name, a preview link and the album.
+    Function takes the userInput (command) and the userQuery(song), and returns the artist, full track name, a preview link and the album. If the user does not input a song, LIRI will default to The Sign Ace of Base.
 
 
 2. concert-this 
@@ -57,7 +57,7 @@ Read more about these methods [here](https://www.npmjs.com/)
 
 3. movie-this
 
-    Function takes the userInput (command) and the userQuery(movie), and returns title, cast, release date, ratings, country of origin, original language and synopsis. 
+    Function takes the userInput (command) and the userQuery(movie), and returns title, cast, release date, ratings, country of origin, original language and synopsis. If the user does not input a movei, LIRI will default to Mr. Nobody.
 
 
 4. do-what-it-says
