@@ -47,25 +47,19 @@ Read more about these methods [here](https://www.npmjs.com/)
 --- 
 1. concert-this 
 
-    *<command, artist name>*
-
     Function takes the userInput (command) and the userQuery(artist), and returns the next concert time and date for that artist, as well as location and city.
 
-2. spotify-this
 
-     *<command, song name>*
+2. spotify-this
 
     Function takes the userInput (command) and the userQuery(song), and returns the artist, full track name, a preview link and the album.
 
 
 3. movie-this
-  *<command, movie name>*
 
     Function takes the userInput (command) and the userQuery(song), and returns title, cast, release date, ratings, country of origin, original language and synopsis. 
 
-    
-4. do-what-it-says
 
-      *<command>*
+4. do-what-it-says
 
     This function will take the text inside of random.txt and then use it to call one of LIRI's commands.
